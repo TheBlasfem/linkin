@@ -16,6 +16,7 @@ Set `linkin` in your module dependencies and config your application fields.
 angular.module('MyApp', ['linkin'])
   .config(function(LinkinProvider) {
     LinkinProvider.setConfig('CLIENT_ID',['SCOPE'], 'STATE');
+    //If you are working for mobile
     if (ionic.Platform.isIOS() || ionic.Platform.isAndroid()) {
       LinkinProvider.setRedirectUri('http://localhost/');
       LinkinProvider.setPlatform('mobile');
