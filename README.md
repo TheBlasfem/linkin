@@ -50,3 +50,11 @@ angular.module('MyApp')
 ```
 
 **Note:** You can find an example of the backend side in the files of this repo.
+
+## Working in Mobile
+
+You will need to download the plugin `inappbrowser`
+
+```
+$ cordova plugin add cordova-plugin-inappbrowser
+```
