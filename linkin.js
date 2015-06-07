@@ -6,9 +6,9 @@
 (function(window, angular, undefined) {
   'use strict';
 
-  angular.module('Linkin', []).provider('Oauth2', Oauth2);
+  angular.module('linkin', []).provider('Linkin', Linkin);
 
-  function Oauth2(){
+  function Linkin(){
     var authWindow, exchangingAuthForToken, deferred, clientId, backendUrl;
     var redirectUri = window.location.origin || window.location.protocol + '//' + window.location.host;
     var platform = "browser";
@@ -107,9 +107,8 @@
         };
 
         return{
-          authenticate: function(provider){
+          authenticate: function(){
             deferred = $q.defer();
-            if (provider == "linkedin"){
               var authUrl = 'https://www.linkedin.com/uas/oauth2/authorization?' + $.param({
                 response_type: 'code',
                 client_id: clientId,
@@ -121,7 +120,6 @@
               authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
               authWindow.addEventListener('loadstart', linkedinCallback);
               if (platform == "browser") pollPopUp();
-            }
             return deferred.promise;
           }
         }
